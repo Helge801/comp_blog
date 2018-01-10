@@ -24,6 +24,7 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
+    @blog.image = "https://picsum.photos/600/400/?image=#{[*1..800].sample}"
 
     if @blog.save
       redirect_to @blog, notice: 'Blog was successfully created.'
