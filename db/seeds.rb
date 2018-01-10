@@ -32,17 +32,43 @@ def get_short_content
   Faker::HeyArnold.quote
 end
 
+def get_profile_image
+  "http://placebeard.it/#{[*145..155].sample}/#{[*145..155].sample}"
+end
+
 em "Creating admin user"
 
-User.create(email: "test1@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", name: Faker::Book.author, roles: "admin")
+User.create(email: "test1@test.com", 
+            password: "asdfasdf", 
+            password_confirmation: "asdfasdf", 
+            name: Faker::Book.author, 
+            roles: "admin",
+            image: get_profile_image)
 
 puts '1 Admin User created'
 
 em "Creating user"
 
-User.create(email: "regular@joe.com", password: "asdfasdf", password_confirmation: "asdfasdf", name: Faker::Book.author, roles: "user" )
+User.create(email: "regular@joe.com", 
+            password: "asdfasdf", 
+            password_confirmation: "asdfasdf", 
+            name: Faker::Book.author, 
+            roles: "user",
+            image: get_profile_image )
 
 puts '1 User created'
+
+em "Creating random Users"
+
+4.times do |i|
+  User.create(email: "regular#{i}@joe.com", 
+              password: "asdfasdf", 
+              password_confirmation: "asdfasdf", 
+              name: Faker::Book.author, 
+              roles: "user",
+              image: get_profile_image )
+  puts "User #{i} created"
+end
 
 em "Creating Blogs"
 
