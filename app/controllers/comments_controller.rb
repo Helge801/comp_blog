@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
-
-   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  access all: [:index, :show, :new, :edit, :create, :update, :destroy], user: :all
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  access all: [:index, :show], user: :all, admin: :all
 
 
   def index
