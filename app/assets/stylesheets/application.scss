@@ -1,3 +1,15 @@
 @import "bootstrap";
 
+.navbar-nav-justin {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
+.justin-nav-bar-color {
+  background-color: black;
+}
+
+.justin-nav-bar-color a {
+  color: white;
+}
