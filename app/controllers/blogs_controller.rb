@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  access all: [:index, :show, :new, :edit, :create, :update, :destroy], user: :all
+  access all: [:index, :show], user: :all, admin: :all
 
   # GET /blogs
   def index
@@ -23,6 +23,7 @@ class BlogsController < ApplicationController
   # POST /blogs
   def create
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
 
     if @blog.save
       redirect_to @blog, notice: 'Blog was successfully created.'

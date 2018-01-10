@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
-
-   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  access all: [:index, :show, :new, :edit, :create, :update, :destroy], user: :all
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  access all: [:index, :show], user: :all, admin: :all
 
 
   def index
@@ -24,6 +23,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = comment.new(comment_params)
+    @comment.user_id = current_user.id
 
     if @comment.save
       redirect_to @comment, notice: 'comment was successfully created.'
