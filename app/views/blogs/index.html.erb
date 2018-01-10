@@ -16,9 +16,8 @@
   <tbody>
     <% @blogs.each do |blog| %>
       <tr>
-        <td><%= blog.title %></td>
-        <td><%= blog.body %></td>
-        <td><%= blog.image %></td>
+        <td><%= link_to blog.title, blog %></td>
+        <td><%= blog.body.slice(1..100) + "..." %></td>
         <td><%= blog.user %></td>
         <td><%= link_to 'Show', blog %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
