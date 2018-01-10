@@ -29,3 +29,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.4'
 gem 'petergate', '~> 1.8', '>= 1.8.1'
+gem 'bootstrap', '~> 4.0.0.beta3'
