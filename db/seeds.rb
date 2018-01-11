@@ -36,6 +36,10 @@ def get_profile_image
   "http://placebeard.it/#{[*145..155].sample}/#{[*145..155].sample}"
 end
 
+cats = [Faker::ProgrammingLanguage.name,Faker::ProgrammingLanguage.name,Faker::ProgrammingLanguage.name,Faker::ProgrammingLanguage.name,Faker::ProgrammingLanguage.name]
+
+em cats.to_s
+
 em "Creating admin user"
 
 User.create(email: "test1@test.com", 
@@ -77,7 +81,8 @@ user_count = User.count
   Blog.create!(title: Faker::Book.title,
                body: get_long_content,
                image: "https://picsum.photos/600/400/?image=#{[*1..800].sample}",
-               user_id: [*1..user_count].sample
+               user_id: [*1..user_count].sample,
+               category: cats.sample
                )
   puts "Blog #{i} created"
 end
