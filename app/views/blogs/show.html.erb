@@ -6,7 +6,7 @@
 
       <div class="col-md-7 justin-body-style">
         <p>
-          <%= @blog.title %>
+          <h2><%= @blog.title %></h2>
         </p>
 
         <p>
@@ -18,10 +18,11 @@
           <%= @blog.body %>
         </p>
         <%= link_to 'Edit', edit_blog_path(@blog) %> |
-        <%= link_to 'Back', blogs_path %>      
+        <%= link_to 'Back', blogs_path %>    
       </div>
 
       <div class="col-md-5">
+        <br>
         <br>
         <br>
         <center>
