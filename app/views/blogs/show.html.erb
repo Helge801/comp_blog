@@ -1,23 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
+<div class="container">
+  <div class="card justin-card">
+    <div class="row">
 
-<p>
-  <%= image_tag @blog.image %>
-</p>
-<p>
-  <strong>Body:</strong>
-  <%= @blog.body %>
-</p>
+      <div class="col-md-7 justin-body-style">
+        <p>
+          <%= @blog.title %>
+        </p>
+
+        <p>
+          <%= image_tag @blog.image %>
+        </p>
+        <%= link_to 'Edit', edit_blog_path(@blog) %> |
+        <%= link_to 'Back', blogs_path %>
+        <p>
+          <%= @blog.body %>
+        </p>
+        <%= link_to 'Edit', edit_blog_path(@blog) %> |
+        <%= link_to 'Back', blogs_path %>      
+      </div>
+
+      <div class="col-md-5">
+        <br>
+        <br>
+        <center>
+        <%= image_tag @user.image %>
+        <p>
+          <strong><%= @user.name %></strong>
+        </p>      
+        <p>
+          <strong>Category:</strong>
+          <strong><%= @blog.category %></strong>
+        </p>
+        </center>
+        <hr>
+        <strong>Comments:</strong>
+        <p>
+          <% @comments.each do |comment| %>
+        <div class="card comment-card">
+          <strong><td><%= comment.user.name %></td></strong>
+          <td><%= comment.body %></td>
+        </div>
+          <br>
+        </p>
+      <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
-<p>
-  <strong>User:</strong>
-  <%= @blog.user %>
-</p>
 
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+<!--   --> 

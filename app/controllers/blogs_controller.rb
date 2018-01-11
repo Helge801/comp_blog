@@ -15,7 +15,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1
   def show
-    @comments = @blog.comments.all
+    @comments = @blog.comment.all
     @user = @blog.user
   end
 
