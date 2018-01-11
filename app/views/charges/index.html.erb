@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>Donations</h1>
+  <div class="card donation_card">
+    <div class="card-body">
+      <h3>Choose Amount</h3>
+      <table>
+        <tr>
+          <td>
+            <span>$5.oo</span>
+          </td>
+          <td>
+            <div>
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="A month's subscription"
+                data-amount="500"
+                data-locale="auto"></script>
+            </div> 
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>$10.oo</span>
+          </td>
+          <td>
+            <div>
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="A month's subscription"
+                data-amount="1000"
+                data-locale="auto"></script>
+            </div> 
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>$20.oo</span>
+          </td>
+          <td>
+            <div>
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="A month's subscription"
+                data-amount="2000"
+                data-locale="auto"></script>
+            </div> 
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

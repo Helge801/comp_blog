@@ -36,3 +36,17 @@ body {
 tr td {
   padding: 10px;
 }
+
+.donation_card {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+  border-radius: 5px;
+  margin-top: 100px;
+
+}
+
+.donation_card div table tr td span {
+  padding-bottom: 20px
+}
