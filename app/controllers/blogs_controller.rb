@@ -5,9 +5,9 @@ class BlogsController < ApplicationController
   # GET /blogs
   def index
     @blogs = if params[:query]
-       titles = Blog.where('title LIKE ?', "%#{params[:query]}%")
-       bodys = Blog.where('body LIKE ?', "%#{params[:query]}%")
-       titles + bodys
+       titles = Blog.where('LOWER(title) LIKE ?', "%#{params[:query].downcase}%")
+       categories = Blog.where('LOWER(category) LIKE ?', "%#{params[:query].downcase}%")
+       titles + categories
     else
       Blog.all
     end
@@ -15,6 +15,8 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1
   def show
+    @comments = @blog.comments.all
+    @user = @blog.user
   end
 
   # GET /blogs/new
