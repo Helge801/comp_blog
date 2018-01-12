@@ -32,6 +32,17 @@ def get_short_content
   Faker::HeyArnold.quote
 end
 
+def get_random_quote
+  case [*1..6].sample
+    when 1 then Faker::HitchhikersGuideToTheGalaxy.quote
+    when 2 then Faker::HeyArnold.quote
+    when 3 then Faker::HowIMetYourMother.quote
+    when 4 then Faker::Movie.quote
+    when 5 then Faker::Seinfeld.quote
+    when 6 then Faker::Dune.quote
+  end
+end
+
 def get_profile_image
   "http://placebeard.it/#{[*145..155].sample}/#{[*145..155].sample}"
 end
@@ -96,6 +107,27 @@ blog_count = Blog.count
                  blog_id: [*1..blog_count].sample
                  )
   puts "Comment #{i} created"
+end
+
+em "Creating chat rooms"
+
+User.all.each do |u|
+  title = Faker::Book.title
+  u.chat_rooms.create!(title: title)
+  puts "Chat-Room: #{title} created for #{u.name}"
+end
+
+em "Creating messages"
+chat_count = ChatRoom.count
+(user_count * 5).times do |i|
+  body = get_random_quote
+  room = [*1..chat_count].sample
+  user = [*1..user_count].sample
+  Message.create!(body: body,
+                  user_id: user,
+                  chat_room_id: room)
+puts "Message #{body} created for user #{user} in room #{room}"
+
 end
 
 
