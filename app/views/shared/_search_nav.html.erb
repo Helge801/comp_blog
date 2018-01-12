@@ -4,5 +4,10 @@
     <div class="navbar-nav-justin">
       <%= link_to "DONATE NOW!!!", charges_path, class: "btn btn-safety btn-justin" %>
       <%= link_to "Placeholder2", root_path, class: "nav-link" %>
+      <%= form_tag(blogs_path, method: :get) do %>
+        <%= text_field_tag :query %>
+        <%= submit_tag 'Search' %>
+      <% end %>
+
     </div>
 </nav>
