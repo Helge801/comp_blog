@@ -5,7 +5,18 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div id="background"></div>  
+
     <%= render "shared/nav"%>
     <%= yield %>
+
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
