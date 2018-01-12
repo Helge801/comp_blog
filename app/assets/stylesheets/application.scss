@@ -72,3 +72,11 @@ tr td {
   background-color: green;
 }
 
+#messages {
+  max-height: 450px;
+  overflow-y: auto;
+  .avatar {
+    margin: 0.5rem;
+  }
+}
+
