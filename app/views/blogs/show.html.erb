@@ -26,28 +26,33 @@
         <br>
         <br>
         <center>
-        <%= image_tag @user.image %>
-        <p>
-          <strong><%= @user.name %></strong>
-        </p>      
-        <p>
-          <strong>Category:</strong>
-          <strong><%= @blog.category %></strong>
-        </p>
-        </center>
-        <hr>
-        <strong>Comments:</strong>
-        <p>
-          <% @comments.each do |comment| %>
-        <div class="card comment-card">
-          <strong><td><%= comment.user.name %></td></strong>
-          <td><%= comment.body %></td>
-        </div>
-          <br>
-        </p>
-      <% end %>
-      </div>
+          <%= image_tag @user.image %>
+          <p>
+            <strong><%= @user.name %></strong>
+          </p>      
+          <p>
+            <strong>Category:</strong>
+            <strong><%= @blog.category %></strong>
+          </p>
+          </center>
+          <hr>
+          <strong>Comments:</strong>
 
+          <%= form_for @comment, url: '#' do |f| %>
+            <div class="form-group">
+              <%= f.label :body %>
+              <%= f.text_area :body, class: 'form-control' %>
+              <small class="text-muted">From 2 to 1000 characters</small>
+            </div>
+
+            <%= f.submit "Post", class: 'btn btn-primary btn-lg' %>
+          <% end %>
+
+          <div id="comments" data-blog-id="<%= @blog.id %>">
+            <%= render @blog.comments %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

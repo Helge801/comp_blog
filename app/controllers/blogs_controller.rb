@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:edit, :update, :destroy]
   access all: [:index, :show], user: :all, admin: :all
 
   # GET /blogs
@@ -15,8 +15,9 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1
   def show
-    @comments = @blog.comment.all
+    @blog = Blog.includes(:comments).find_by(id: params[:id])
     @user = @blog.user
+    @comment = Comment.new
   end
 
   # GET /blogs/new
@@ -30,11 +31,11 @@ class BlogsController < ApplicationController
 
   # POST /blogs
   def create
-    @blog = Blog.new(blog_params)
-    @blog.user_id = current_user.id
-    @blog.image = "https://picsum.photos/600/400/?image=#{[*1..800].sample}"
 
+    @blog = current_user.blogs.build(blog_params)
+    @blog.image = "https://picsum.photos/600/400/?image=#{[*1..800].sample}"
     if @blog.save
+      flash[:success] = 'Blog added!'
       redirect_to @blog, notice: 'Blog was successfully created.'
     else
       render :new

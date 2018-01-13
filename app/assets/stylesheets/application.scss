@@ -80,3 +80,11 @@ tr td {
   }
 }
 
+#comments {
+  max-height: 450px;
+  overflow-y: auto;
+  .avatar {
+    margin: 0.5rem;
+  }
+}
+
